@@ -1,0 +1,31 @@
+PORTAFOLIO WEB - LAURA
+
+Archivos:
+- index.html: página de inicio
+- sobre-mi.html: descripción, foto, educación y habilidades
+- proyectos.html: categorías de proyectos
+- packaging.html: Gomsi y empaque de anillo
+- publicidad.html: Oreo y póster de película
+- contacto.html: correo y teléfono
+- estilos.css: diseño compartido de todas las páginas
+
+IMPORTANTE:
+1. Guarda todos estos archivos juntos dentro de la carpeta "portafolio web".
+2. Coloca la imagen personal en esa misma carpeta y asegúrate de que se llame exactamente mi-foto.png.
+3. Abre index.html para ver el portafolio.
+4. Las cuatro tarjetas de proyectos tienen espacios reservados para las imágenes. No se han enlazado imágenes de proyectos porque todavía no se han confirmado sus nombres exactos.
+
+
+ACTUALIZACIÓN VISUAL:
+Se añadieron detalles gráficos pastel compartidos en todas las páginas: líneas cuadriculadas, acentos decorativos, tarjetas con profundidad y ajustes para celular. La página Packaging ahora muestra la fotografía real de Gomys en su tarjeta de proyecto.
+
+
+ACTUALIZACIÓN - PROYECTOS DE PUBLICIDAD:
+- publicidad.html: tarjetas clicables de Oreo, McFlurry de Milo y Dune.
+- oreo.html: página individual del flyer de Oreo.
+- milo.html: página individual de la animación publicitaria del McFlurry de Milo.
+- dune.html: página individual del póster conceptual de Dune.
+- Miniaturas: oreo-miniatura.png, milo-miniatura.png y dune-miniatura.png.
+
+PENDIENTE:
+Las páginas individuales ya tienen su estructura y textos, pero todavía falta incorporar las imágenes principales de cada trabajo. Cuando se agreguen, se reemplazará el recuadro provisional por la imagen correspondiente.

@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orielle | Laura Arroyave</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <style>
+        .orielle-pagina {
+            --vino: #672F3B;
+            --vino-oscuro: #48212D;
+            --dorado: #B9955D;
+            --crema: #FFF8F2;
+            --rosa: #EBC4C0;
+            background: var(--crema);
+            color: #493B3B;
+            overflow: hidden;
+        }
+
+        .orielle-contenedor {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .orielle-pagina img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .orielle-etiqueta {
+            display: inline-block;
+            color: var(--dorado);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .orielle-titulo {
+            color: var(--vino);
+            font-family: Georgia, serif;
+            font-size: clamp(38px, 6vw, 65px);
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin: 12px 0 20px;
+        }
+
+        .orielle-subtitulo {
+            color: var(--vino);
+            font-family: Georgia, serif;
+            font-size: clamp(25px, 4vw, 36px);
+            font-weight: 400;
+            margin: 0 0 20px;
+        }
+
+        .orielle-texto {
+            font-size: 15px;
+            line-height: 1.9;
+            max-width: 680px;
+            color: #594A49;
+        }
+
+        .orielle-portada {
+            position: relative;
+            padding: 65px 0 75px;
+            background:
+                radial-gradient(circle at 8% 15%, rgba(235,196,192,.55) 0 90px, transparent 91px),
+                radial-gradient(circle at 92% 85%, rgba(185,149,93,.16) 0 120px, transparent 121px),
+                linear-gradient(135deg, #F7E8E3, #FFF8F2 65%);
+        }
+
+        .orielle-portada-contenido {
+            display: grid;
+            grid-template-columns: .8fr 1.4fr;
+            align-items: center;
+            gap: 45px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .orielle-portada-texto {
+            padding: 15px 0;
+        }
+
+        .orielle-portada-texto h1 {
+            font-family: Georgia, serif;
+            color: var(--vino);
+            font-size: clamp(48px, 7vw, 82px);
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin: 15px 0;
+        }
+
+        .orielle-portada-texto p {
+            line-height: 1.8;
+            max-width: 340px;
+            font-size: 15px;
+        }
+
+        .orielle-foto-principal {
+            border: 9px solid rgba(255,255,255,.85);
+            box-shadow: 12px 13px 0 rgba(103,47,59,.12);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .orielle-foto-principal img {
+            width: 100%;
+        }
+
+        .orielle-linea {
+            width: 75px;
+            height: 1px;
+            background: var(--dorado);
+            margin: 22px 0;
+        }
+
+        .orielle-seccion {
+            padding: 85px 0;
+            position: relative;
+        }
+
+        .orielle-introduccion {
+            text-align: center;
+            background: #FFFDF9;
+        }
+
+        .orielle-introduccion .orielle-texto {
+            margin: auto;
+        }
+
+        .orielle-introduccion .orielle-linea {
+            margin: 22px auto;
+        }
+
+        .orielle-identidad {
+            background: #F3E5E0;
+        }
+
+        .orielle-imagen-tablero {
+            max-width: 850px;
+            margin: 35px auto 0;
+            padding: 12px;
+            background: white;
+            box-shadow: 0 12px 30px rgba(72,33,45,.10);
+        }
+
+        .orielle-desarrollo {
+            background: #FFF8F2;
+        }
+
+        .orielle-desarrollo-layout {
+            display: grid;
+            grid-template-columns: .7fr 1.3fr;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .orielle-troquel {
+            background: white;
+            padding: 12px;
+            box-shadow: 0 12px 30px rgba(72,33,45,.09);
+        }
+
+        .orielle-detalles {
+            background: #F0DFD9;
+        }
+
+        .orielle-detalles-layout {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .orielle-foto-detalle {
+            padding: 10px;
+            background: white;
+            box-shadow: 10px 10px 0 rgba(103,47,59,.10);
+        }
+
+        .orielle-participacion {
+            text-align: center;
+            background: var(--vino);
+            color: white;
+            padding: 75px 0;
+        }
+
+        .orielle-participacion .orielle-titulo {
+            color: #F3DCC0;
+        }
+
+        .orielle-participacion .orielle-texto {
+            color: #F8EDEA;
+            margin: auto;
+        }
+
+        .orielle-participacion .orielle-etiqueta {
+            color: #D9B77F;
+        }
+
+        .orielle-participacion .orielle-linea {
+            margin: 22px auto;
+            background: #D9B77F;
+        }
+
+        .orielle-volver {
+            display: inline-block;
+            margin-top: 30px;
+            color: #F3DCC0;
+            text-decoration: none;
+            border-bottom: 1px solid #D9B77F;
+            padding-bottom: 5px;
+            transition: opacity .3s ease;
+        }
+
+        .orielle-volver:hover {
+            opacity: .7;
+        }
+
+        .orielle-numero {
+            color: var(--dorado);
+            font-family: Georgia, serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 760px) {
+            .orielle-portada-contenido,
+            .orielle-desarrollo-layout,
+            .orielle-detalles-layout {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .orielle-portada {
+                padding: 45px 0;
+            }
+
+            .orielle-portada-texto {
+                text-align: center;
+            }
+
+            .orielle-portada-texto p {
+                margin: auto;
+            }
+
+            .orielle-portada-texto .orielle-linea {
+                margin: 20px auto;
+            }
+
+            .orielle-seccion {
+                padding: 60px 0;
+            }
+        }
+
+
+        /* ORNAMENTACION BARROCA Y ACENTOS DORADOS */
+        .orielle-pagina {
+            background-image: repeating-linear-gradient(135deg, rgba(185,149,93,.025) 0 1px, transparent 1px 9px);
+        }
+
+        .orielle-portada {
+            isolation: isolate;
+            border-bottom: 1px solid rgba(185,149,93,.55);
+        }
+
+        .orielle-portada::before,
+        .orielle-portada::after {
+            content: "❧";
+            position: absolute;
+            z-index: 0;
+            color: rgba(185,149,93,.48);
+            font-family: Georgia, serif;
+            font-size: clamp(90px, 13vw, 170px);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .orielle-portada::before {
+            top: 12px;
+            left: 2.5%;
+            transform: rotate(-25deg);
+        }
+
+        .orielle-portada::after {
+            right: 2.5%;
+            bottom: 4px;
+            transform: rotate(155deg);
+        }
+
+        .orielle-portada-texto {
+            position: relative;
+            padding: 28px 22px 28px 30px;
+            border-left: 1px solid var(--dorado);
+            border-top: 1px solid rgba(185,149,93,.65);
+            border-bottom: 1px solid rgba(185,149,93,.65);
+        }
+
+        .orielle-portada-texto::before,
+        .orielle-portada-texto::after {
+            content: "✦";
+            position: absolute;
+            color: var(--dorado);
+            font-size: 19px;
+            background: #F7E8E3;
+            line-height: 1;
+        }
+
+        .orielle-portada-texto::before { top: -10px; left: -9px; }
+        .orielle-portada-texto::after { bottom: -10px; left: -9px; }
+
+        .orielle-portada-texto h1 {
+            text-shadow: 1px 2px 0 rgba(185,149,93,.15);
+        }
+
+        .orielle-foto-principal {
+            position: relative;
+            border: 1px solid var(--dorado);
+            outline: 7px solid rgba(255,255,255,.78);
+            outline-offset: -17px;
+            box-shadow: 15px 16px 0 rgba(103,47,59,.12), 0 15px 35px rgba(72,33,45,.12);
+        }
+
+        .orielle-foto-principal::before {
+            content: "✧";
+            position: absolute;
+            z-index: 2;
+            top: 12px;
+            left: 15px;
+            color: #D9B77F;
+            font-size: 27px;
+            text-shadow: 0 1px 5px rgba(72,33,45,.5);
+        }
+
+        .orielle-seccion {
+            isolation: isolate;
+        }
+
+        .orielle-seccion::before,
+        .orielle-seccion::after {
+            content: "❧";
+            position: absolute;
+            z-index: -1;
+            color: rgba(185,149,93,.18);
+            font-family: Georgia, serif;
+            font-size: 105px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .orielle-seccion::before {
+            top: 12px;
+            left: 2.5%;
+            transform: rotate(-35deg);
+        }
+
+        .orielle-seccion::after {
+            right: 2.5%;
+            bottom: 5px;
+            transform: rotate(145deg);
+        }
+
+        .orielle-introduccion {
+            border-top: 7px double rgba(185,149,93,.34);
+            border-bottom: 7px double rgba(185,149,93,.34);
+            background-image: radial-gradient(circle at center, rgba(185,149,93,.07) 0 1px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+
+        .orielle-etiqueta {
+            position: relative;
+            padding: 0 24px;
+        }
+
+        .orielle-etiqueta::before,
+        .orielle-etiqueta::after {
+            content: "✦";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--dorado);
+            font-size: 12px;
+        }
+
+        .orielle-etiqueta::before { left: 0; }
+        .orielle-etiqueta::after { right: 0; }
+
+        .orielle-subtitulo {
+            text-shadow: 1px 1px 0 rgba(185,149,93,.18);
+        }
+
+        .orielle-linea {
+            position: relative;
+            width: 115px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+        }
+
+        .orielle-linea::before {
+            content: "❖";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0 7px;
+            color: var(--dorado);
+            background: inherit;
+            font-size: 15px;
+            line-height: 1;
+        }
+
+        .orielle-identidad {
+            background-image: linear-gradient(135deg, rgba(255,248,242,.5), transparent 45%),
+                              repeating-linear-gradient(45deg, rgba(185,149,93,.035) 0 1px, transparent 1px 12px);
+            border-top: 1px solid rgba(185,149,93,.35);
+            border-bottom: 1px solid rgba(185,149,93,.35);
+        }
+
+        .orielle-imagen-tablero,
+        .orielle-troquel,
+        .orielle-foto-detalle {
+            position: relative;
+            border: 1px solid rgba(185,149,93,.75);
+            outline: 1px solid rgba(185,149,93,.35);
+            outline-offset: 5px;
+            box-shadow: 0 15px 35px rgba(72,33,45,.12);
+        }
+
+        .orielle-imagen-tablero::before,
+        .orielle-troquel::before,
+        .orielle-foto-detalle::before {
+            content: "✥";
+            position: absolute;
+            z-index: 2;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 2px 12px;
+            color: var(--dorado);
+            background: #FFF8F2;
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .orielle-desarrollo {
+            background-image: radial-gradient(ellipse at 95% 8%, rgba(185,149,93,.12), transparent 28%);
+        }
+
+        .orielle-desarrollo-layout > div:first-child {
+            padding: 24px 0 24px 25px;
+            border-left: 2px solid rgba(185,149,93,.65);
+        }
+
+        .orielle-detalles {
+            background-image: linear-gradient(120deg, rgba(255,248,242,.35), transparent 55%),
+                              repeating-linear-gradient(135deg, rgba(185,149,93,.04) 0 1px, transparent 1px 13px);
+            border-top: 1px solid rgba(185,149,93,.4);
+        }
+
+        .orielle-foto-detalle {
+            box-shadow: 12px 12px 0 rgba(103,47,59,.10), 0 15px 35px rgba(72,33,45,.12);
+        }
+
+        .orielle-participacion {
+            position: relative;
+            overflow: hidden;
+            border-top: 5px double #D9B77F;
+            border-bottom: 5px double #D9B77F;
+            background-image: radial-gradient(circle at 12% 18%, rgba(217,183,127,.13) 0 2px, transparent 3px),
+                              radial-gradient(circle at 88% 82%, rgba(217,183,127,.13) 0 2px, transparent 3px),
+                              linear-gradient(135deg, #48212D, #672F3B 52%, #48212D);
+            background-size: 22px 22px, 22px 22px, auto;
+        }
+
+        .orielle-participacion::before,
+        .orielle-participacion::after {
+            content: "❧";
+            position: absolute;
+            color: rgba(217,183,127,.32);
+            font-family: Georgia, serif;
+            font-size: clamp(100px, 17vw, 190px);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .orielle-participacion::before { top: 4px; left: 2%; transform: rotate(-30deg); }
+        .orielle-participacion::after { bottom: 0; right: 2%; transform: rotate(150deg); }
+
+        .orielle-participacion .orielle-contenedor {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            padding: 35px 30px;
+            border: 1px solid rgba(217,183,127,.55);
+            outline: 1px solid rgba(217,183,127,.25);
+            outline-offset: 7px;
+        }
+
+        .orielle-volver {
+            padding: 10px 22px;
+            border: 1px solid rgba(217,183,127,.75);
+            border-radius: 2px;
+            letter-spacing: 1px;
+            transition: background .25s ease, color .25s ease;
+        }
+
+        .orielle-volver:hover {
+            opacity: 1;
+            color: var(--vino-oscuro);
+            background: #F3DCC0;
+        }
+
+        @media (max-width: 760px) {
+            .orielle-portada::before { left: -20px; top: 0; }
+            .orielle-portada::after { right: -20px; bottom: 0; }
+            .orielle-portada-texto { padding: 22px 15px; }
+            .orielle-participacion .orielle-contenedor { padding: 28px 18px; }
+            .orielle-seccion::before { left: -25px; }
+            .orielle-seccion::after { right: -25px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="index.html">Laura A.</a>
+
+    <nav aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="proyectos.html" class="activo">Proyectos</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+</header>
+
+<main class="orielle-pagina">
+
+    <!-- PORTADA -->
+    <section class="orielle-portada">
+        <div class="orielle-contenedor orielle-portada-contenido">
+
+            <div class="orielle-portada-texto">
+                <span class="orielle-etiqueta">Proyecto de packaging</span>
+                <h1>Orielle</h1>
+                <div class="orielle-linea"></div>
+                <p>
+                    Una propuesta de empaque para joyería inspirada
+                    en la elegancia, los detalles ornamentales y
+                    la arquitectura barroca.
+                </p>
+            </div>
+
+            <div class="orielle-foto-principal">
+                <img src="orielle-portada.png"
+                     alt="Presentación del empaque Orielle con un anillo">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONCEPTO -->
+    <section class="orielle-seccion orielle-introduccion">
+        <div class="orielle-contenedor">
+
+            <span class="orielle-etiqueta">01 / Concepto e inspiración</span>
+            <h2 class="orielle-subtitulo">Una inspiración barroca</h2>
+            <div class="orielle-linea"></div>
+
+            <p class="orielle-texto">
+                El proyecto consistió en desarrollar un empaque para
+                una joya, tomando como inspiración la arquitectura y
+                ornamentación barroca observadas durante una visita
+                a un museo religioso.
+
+                La propuesta busca transmitir exclusividad y
+                sofisticación a través de una presentación elegante,
+                con detalles que evocan la riqueza ornamental de este
+                estilo artístico.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- IDENTIDAD -->
+    <section class="orielle-seccion orielle-identidad">
+        <div class="orielle-contenedor">
+
+            <span class="orielle-etiqueta">02 / Identidad visual</span>
+            <h2 class="orielle-subtitulo">La esencia de Orielle</h2>
+
+            <p class="orielle-texto">
+                La identidad visual acompaña la propuesta de empaque
+                mediante una estética delicada y elegante, en la que
+                los tonos profundos y los acentos dorados refuerzan
+                el carácter de la pieza.
+            </p>
+
+            <div class="orielle-imagen-tablero">
+                <img src="orielle-identidad.png"
+                     alt="Tablero de identidad visual de Orielle">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TROQUEL -->
+    <section class="orielle-seccion orielle-desarrollo">
+        <div class="orielle-contenedor orielle-desarrollo-layout">
+
+            <div>
+                <span class="orielle-etiqueta">03 / Desarrollo estructural</span>
+                <h2 class="orielle-subtitulo">Diseño del empaque</h2>
+                <div class="orielle-linea"></div>
+
+                <p class="orielle-texto">
+                    Para el desarrollo del empaque se trabajó en
+                    la estructura y el sistema de armado, definiendo
+                    las formas y dimensiones necesarias para su
+                    construcción física.
+
+                    El troquel fue elaborado en Adobe Illustrator
+                    como parte del proceso de diseño estructural.
+                </p>
+            </div>
+
+            <div class="orielle-troquel">
+                <img src="orielle-troquel.png"
+                     alt="Desarrollo del troquel del empaque Orielle">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DETALLES -->
+    <section class="orielle-seccion orielle-detalles">
+        <div class="orielle-contenedor orielle-detalles-layout">
+
+            <div class="orielle-foto-detalle">
+                <img src="orielle-detalles.jpg"
+                     alt="Detalle del empaque y la presentación de la joya">
+            </div>
+
+            <div>
+                <span class="orielle-etiqueta">04 / Detalles</span>
+                <h2 class="orielle-subtitulo">Cuidado en la presentación</h2>
+                <div class="orielle-linea"></div>
+
+                <p class="orielle-texto">
+                    La propuesta busca que el empaque complemente
+                    la joya y haga parte de su presentación. Los
+                    detalles visuales y ornamentales ayudan a
+                    construir una experiencia que comunica elegancia
+                    y exclusividad.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PARTICIPACIÓN -->
+    <section class="orielle-participacion">
+        <div class="orielle-contenedor">
+
+            <span class="orielle-etiqueta">05 / Mi participación</span>
+            <h2 class="orielle-titulo">Proceso en equipo</h2>
+            <div class="orielle-linea"></div>
+
+            <p class="orielle-texto">
+                Proyecto desarrollado en equipo. Mi participación
+                se centró en el diseño del troquel estructural en
+                Adobe Illustrator, definiendo la forma y el sistema
+                de armado del empaque para su posterior construcción
+                física.
+            </p>
+
+            <a href="packaging.html" class="orielle-volver">
+                ← Volver a Packaging
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    © 2026 Laura Arroyave | Portafolio de Diseño Gráfico
+</footer>
+
+</body>
+</html>

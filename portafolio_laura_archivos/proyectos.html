@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos | Laura Arroyave</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <style>
+        .miniatura-categoria {
+            height: 220px;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .miniatura-categoria:hover {
+            transform: translateY(-4px);
+        }
+
+        .miniatura-categoria img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+</head>
+
+<body class="pagina-proyectos">
+
+<header>
+    <a class="logo" href="index.html">Laura A.</a>
+
+    <nav aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="proyectos.html" class="activo">Proyectos</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+</header>
+
+<main>
+
+    <section class="encabezado-pagina">
+        <div class="contenedor">
+            <span class="etiqueta">Selección de trabajos</span>
+            <h1>Mis proyectos</h1>
+            <p>Mis trabajos están organizados en dos categorías para que puedas explorar cada una por separado.</p>
+        </div>
+    </section>
+
+    <section class="seccion contenedor">
+
+        <div class="tarjetas">
+
+            <article class="tarjeta">
+
+                <div class="miniatura-categoria">
+                    <img src="portada-packaging.png" alt="Portada de la categoría Packaging">
+                </div>
+
+                <p>Diseño de empaques y presentación visual de productos.</p>
+
+                <a class="boton" href="packaging.html">Ver proyectos</a>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <div class="miniatura-categoria">
+                    <img src="portada-publicidad.png" alt="Portada de la categoría Publicidad">
+                </div>
+
+                <p>Piezas gráficas y propuestas visuales de carácter publicitario.</p>
+
+                <a class="boton" href="publicidad.html">Ver proyectos</a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    © 2026 Laura Arroyave | Portafolio de Diseño Gráfico
+</footer>
+
+</body>
+</html>

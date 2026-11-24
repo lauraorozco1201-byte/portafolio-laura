@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gomys | Laura Arroyave</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <style>
+        .gomys-pagina {
+            --lila-fondo: #E9DDF2;
+            --lila-medio: #C7A4DF;
+            --morado: #765A88;
+            --rosa: #F2B5D0;
+            --coral: #F5A99B;
+            --amarillo: #F7E39A;
+            --azul: #BFDDED;
+            --menta: #B8DEC9;
+            --crema: #FFF8F2;
+            overflow: hidden;
+            background: var(--crema);
+            position: relative;
+        }
+
+        .gomys-contenedor {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .gomys-pagina img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .gomys-etiqueta {
+            color: var(--morado);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .gomys-titulo {
+            color: var(--morado);
+            font-size: clamp(30px, 5vw, 48px);
+            margin: 12px 0 20px;
+        }
+
+        .gomys-texto {
+            color: #403747;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 680px;
+        }
+
+        /* ELEMENTOS DECORATIVOS */
+
+        .gomys-decoracion {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .gomys-burbuja {
+            border: 2px solid rgba(118, 90, 136, 0.25);
+            border-radius: 50%;
+        }
+
+        .burbuja-1 { width: 35px; height: 35px; }
+        .burbuja-2 { width: 17px; height: 17px; }
+        .burbuja-3 { width: 24px; height: 24px; }
+
+        .gomys-remolino {
+            width: 75px;
+            height: 75px;
+            border: 3px solid transparent;
+            border-top-color: rgba(118, 90, 136, 0.28);
+            border-right-color: rgba(118, 90, 136, 0.28);
+            border-radius: 50%;
+            transform: rotate(35deg);
+        }
+
+        .gomys-remolino::after {
+            content: "";
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border: 3px solid transparent;
+            border-top-color: rgba(118, 90, 136, 0.28);
+            border-radius: 50%;
+            top: 15px;
+            left: 15px;
+        }
+
+        .gomys-simbolo {
+            color: var(--morado);
+            font-size: 27px;
+            opacity: 0.35;
+        }
+
+        .gomys-pulpo {
+            font-size: 42px;
+            opacity: 0.13;
+            filter: grayscale(1);
+        }
+
+        /* 1. PORTADA */
+
+        .gomys-portada {
+            position: relative;
+            background:
+                radial-gradient(circle at 90% 15%, rgba(247, 227, 154, 0.55) 0 65px, transparent 66px),
+                radial-gradient(circle at 12% 90%, rgba(191, 221, 237, 0.45) 0 100px, transparent 101px),
+                var(--lila-fondo);
+            padding: 65px 0;
+            overflow: hidden;
+        }
+
+        .gomys-portada::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: var(--rosa);
+            border-radius: 50%;
+            opacity: 0.35;
+            top: -210px;
+            left: -100px;
+        }
+
+        .gomys-portada::after {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border: 2px solid rgba(118, 90, 136, 0.18);
+            border-radius: 50%;
+            bottom: -150px;
+            right: 5%;
+        }
+
+        .gomys-portada-contenido {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 0.85fr 1.5fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .gomys-portada-texto h1 {
+            font-size: clamp(48px, 7vw, 85px);
+            color: var(--morado);
+            margin: 15px 0;
+            letter-spacing: 3px;
+        }
+
+        .gomys-portada-texto p {
+            color: #55465D;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .gomys-foto-principal {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 12px 12px 0 rgba(118, 90, 136, 0.13);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .gomys-foto-principal:hover {
+            transform: translateY(-5px);
+            box-shadow: 15px 16px 0 rgba(118, 90, 136, 0.17);
+        }
+
+        .portada-burbuja-1 { top: 45px; right: 7%; }
+        .portada-burbuja-2 { top: 100px; right: 12%; }
+        .portada-remolino { bottom: 35px; left: 4%; }
+        .portada-pulpo { right: 3%; bottom: 25px; }
+
+        /* 2. CONCEPTO */
+
+        .gomys-concepto {
+            position: relative;
+            padding: 90px 0;
+            background:
+                radial-gradient(circle at 8% 20%, rgba(191, 221, 237, 0.55) 0 45px, transparent 46px),
+                radial-gradient(circle at 92% 85%, rgba(245, 169, 155, 0.35) 0 75px, transparent 76px),
+                linear-gradient(135deg, #FFF8F2 0%, #F9EDF6 55%, #FFF4F0 100%);
+            overflow: hidden;
+        }
+
+        .gomys-concepto::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 2px dashed rgba(118, 90, 136, .18);
+            border-radius: 50%;
+            left: -90px;
+            top: 45%;
+        }
+
+        .gomys-concepto-contenido {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            padding: 38px 30px;
+            background: rgba(255, 255, 255, .48);
+            border: 1px solid rgba(255,255,255,.8);
+            border-radius: 28px;
+            box-shadow: 0 12px 35px rgba(118, 90, 136, .06);
+        }
+
+        .gomys-concepto .gomys-texto { margin: auto; }
+        .concepto-remolino { top: 35px; right: 8%; }
+        .concepto-pulpo { bottom: 15px; left: 5%; }
+        .concepto-burbuja { bottom: 40px; right: 15%; }
+
+        /* 3. IDENTIDAD VISUAL */
+
+        .gomys-identidad {
+            position: relative;
+            padding: 85px 0;
+            background:
+                radial-gradient(circle at 5% 90%, rgba(245, 169, 155, 0.25) 0 90px, transparent 91px),
+                radial-gradient(circle at 95% 12%, rgba(191, 221, 237, .45) 0 100px, transparent 101px),
+                #F8EDF7;
+            overflow: hidden;
+        }
+
+        .gomys-identidad::before {
+            content: "";
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            border: 2px solid rgba(199, 164, 223, 0.4);
+            border-radius: 50%;
+            top: -130px;
+            left: -110px;
+        }
+
+        .gomys-identidad::after {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background: rgba(247, 227, 154, .35);
+            border-radius: 42% 58% 60% 40%;
+            right: -45px;
+            bottom: 40px;
+            transform: rotate(25deg);
+        }
+
+        .gomys-identidad-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 0.8fr;
+            gap: 25px;
+            margin-top: 40px;
+            align-items: stretch;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gomys-logo {
+            background: var(--lila-fondo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 20px;
+            min-height: 380px;
+            padding: 20px;
+            box-shadow: 8px 8px 0 rgba(118, 90, 136, 0.22);
+        }
+
+        .gomys-logo img {
+            width: 110%;
+            max-width: none;
+            max-height: 385px;
+            object-fit: contain;
+            transform: translateX(12px) scale(1.1);
+        }
+
+        .gomys-patron {
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 300px;
+            background: var(--rosa);
+            box-shadow: 8px 8px 0 rgba(242, 181, 208, 0.3);
+        }
+
+        .gomys-patron img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .identidad-pulpo { top: 35px; right: 5%; }
+        .identidad-remolino { bottom: 25px; right: 4%; }
+        .identidad-burbuja { top: 55%; left: 3%; }
+
+        /* 4. MI PARTICIPACIÓN */
+
+        .gomys-participacion {
+            position: relative;
+            padding: 85px 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(247, 227, 154, 0.45) 0 55px, transparent 56px),
+                radial-gradient(circle at 90% 80%, rgba(184, 222, 201, 0.45) 0 75px, transparent 76px),
+                linear-gradient(120deg, #E9DDF2 0%, #E6D8F0 55%, #F4E4F1 100%);
+            overflow: hidden;
+        }
+
+        .gomys-participacion::before {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border: 2px dashed rgba(118, 90, 136, .2);
+            border-radius: 50%;
+            right: -130px;
+            top: -100px;
+        }
+
+        .gomys-participacion-contenido {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            background: rgba(255, 248, 242, .62);
+            border: 1px solid rgba(255,255,255,.7);
+            border-radius: 26px;
+            padding: 35px 30px;
+        }
+
+        .gomys-participacion .gomys-texto { margin: auto; }
+        .participacion-remolino { top: 30px; right: 8%; }
+        .participacion-pulpo { bottom: 15px; left: 7%; }
+
+        /* 5. SISTEMA DE EMPAQUE */
+
+        .gomys-producto {
+            position: relative;
+            padding: 85px 0;
+            background:
+                radial-gradient(circle at 95% 15%, rgba(242, 181, 208, 0.35) 0 85px, transparent 86px),
+                radial-gradient(circle at 5% 85%, rgba(191, 221, 237, .4) 0 95px, transparent 96px),
+                linear-gradient(135deg, #FFF4F8, #F8EDF7 55%, #FFF8F2);
+            overflow: hidden;
+        }
+
+        .gomys-producto::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            top: 0;
+            left: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(199,164,223,.28) 0 18px,
+                transparent 18px 36px
+            );
+        }
+
+        .gomys-tipos-empaque {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        .gomys-tipo {
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(118, 90, 136, 0.12);
+            box-shadow: 0 8px 22px rgba(118, 90, 136, .06);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .gomys-tipo:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 13px 28px rgba(118, 90, 136, .11);
+        }
+
+        .gomys-tipo-numero {
+            display: inline-block;
+            color: var(--morado);
+            background: var(--amarillo);
+            padding: 7px 12px;
+            border-radius: 50%;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .gomys-tipo h3 {
+            color: var(--morado);
+            margin: 5px 0 10px;
+            font-size: 20px;
+        }
+
+        .gomys-tipo p {
+            color: #55465D;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .gomys-producto-imagen {
+            max-width: 900px;
+            margin: 40px auto 0;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #F2B5D0;
+            padding: 12px;
+            box-shadow: 0 12px 30px rgba(118, 90, 136, 0.10);
+        }
+
+        .gomys-producto-imagen img {
+            border-radius: 12px;
+        }
+
+        /* EMPAQUE INTERNO */
+
+        .gomys-empaque-interno {
+            margin-top: 65px;
+            padding: 35px 25px;
+            border-radius: 26px;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(247,227,154,.38) 0 100px, transparent 101px),
+                rgba(233, 221, 242, .62);
+            border: 1px solid rgba(118,90,136,.12);
+        }
+
+        .gomys-empaque-interno-titulo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .gomys-empaque-interno-titulo h3 {
+            color: var(--morado);
+            font-size: 25px;
+            margin: 10px 0;
+        }
+
+        .gomys-empaque-interno-titulo p {
+            color: #55465D;
+            line-height: 1.7;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .gomys-bolsitas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .gomys-bolsita-card {
+            background: #F2B5D0;
+            padding: 18px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 22px rgba(118, 90, 136, 0.10);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .gomys-bolsita-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 13px 28px rgba(118,90,136,.16);
+        }
+
+        .gomys-bolsita-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .gomys-bolsita-card h4 {
+            color: #765A88;
+            font-size: 17px;
+            text-align: center;
+            margin: 16px 0 4px;
+        }
+
+        .gomys-bolsita-card span {
+            display: block;
+            color: #765A88;
+            font-size: 12px;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .producto-remolino { top: 35px; left: 3%; }
+        .producto-pulpo { right: 4%; bottom: 25px; }
+        .producto-burbuja { left: 8%; bottom: 80px; }
+
+        /* 6. DISEÑO ESTRUCTURAL */
+
+        .gomys-estructura {
+            position: relative;
+            padding: 85px 0;
+            background:
+                radial-gradient(circle at 95% 10%, rgba(191, 221, 237, 0.5) 0 80px, transparent 81px),
+                radial-gradient(circle at 8% 90%, rgba(245,169,155,.32) 0 90px, transparent 91px),
+                linear-gradient(130deg, #E9DDF2, #E5EAF5 58%, #F5E6F0);
+            overflow: hidden;
+        }
+
+        .gomys-estructura::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 2px dashed rgba(118,90,136,.22);
+            border-radius: 50%;
+            left: -90px;
+            top: 20px;
+        }
+
+        .gomys-estructura-contenido {
+            position: relative;
+            z-index: 2;
+        }
+
+        .gomys-troquel {
+            margin: 40px auto 0;
+            max-width: 900px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #F8EDF7;
+            padding: 18px;
+            box-shadow: 10px 10px 0 rgba(118,90,136,.16);
+            border: 1px solid rgba(255,255,255,.8);
+        }
+
+        .gomys-troquel img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .estructura-remolino { top: 35px; right: 4%; }
+        .estructura-pulpo { bottom: 25px; left: 3%; }
+        .estructura-burbuja { bottom: 65px; right: 8%; }
+
+        /* 7. CIERRE */
+
+        .gomys-cierre {
+            position: relative;
+            padding: 80px 0;
+            text-align: center;
+            background:
+                radial-gradient(circle at 15% 85%, rgba(184, 222, 201, 0.55) 0 75px, transparent 76px),
+                radial-gradient(circle at 85% 15%, rgba(247, 227, 154, 0.55) 0 65px, transparent 66px),
+                linear-gradient(135deg, #FFF4F8, #F2E8F5 55%, #FFF8F2);
+            overflow: hidden;
+        }
+
+        .gomys-cierre::before {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border: 2px dashed rgba(118,90,136,.2);
+            border-radius: 50%;
+            right: -130px;
+            bottom: -130px;
+        }
+
+        .gomys-cierre-contenido {
+            position: relative;
+            z-index: 2;
+        }
+
+        .gomys-cierre .gomys-texto { margin: 15px auto; }
+
+        .gomys-volver {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 24px;
+            color: white;
+            background: var(--morado);
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background .3s ease, transform .3s ease;
+        }
+
+        .gomys-volver:hover {
+            background: #5D456C;
+            transform: translateY(-3px);
+        }
+
+        .cierre-pulpo { top: 25px; left: 7%; }
+        .cierre-remolino { right: 7%; bottom: 20px; }
+
+        /* ADAPTACIÓN PARA CELULARES */
+
+        @media (max-width: 700px) {
+            .gomys-portada-contenido {
+                grid-template-columns: 1fr;
+            }
+
+            .gomys-identidad-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gomys-logo { min-height: 250px; }
+
+            .gomys-logo img { max-height: 275px; }
+
+            .gomys-patron { min-height: 250px; }
+
+            .gomys-portada { padding: 40px 0; }
+
+            .gomys-concepto,
+            .gomys-identidad,
+            .gomys-participacion,
+            .gomys-producto,
+            .gomys-estructura {
+                padding: 60px 0;
+            }
+
+            .gomys-titulo { font-size: 32px; }
+
+            .gomys-pulpo { font-size: 30px; }
+
+            .gomys-remolino {
+                width: 45px;
+                height: 45px;
+            }
+
+            .gomys-tipos-empaque { grid-template-columns: 1fr; }
+
+            .gomys-empaque-interno { margin-top: 45px; }
+
+            .gomys-bolsitas-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                gap: 20px;
+            }
+
+            .gomys-bolsita-card { padding: 14px; }
+            .gomys-troquel { padding: 10px; }
+
+            .gomys-concepto-contenido,
+            .gomys-participacion-contenido,
+            .gomys-estructura-contenido {
+                padding: 28px 20px;
+            }
+
+            .gomys-empaque-interno { padding: 28px 16px; }
+
+            .gomys-foto-principal { transform: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .gomys-tipo,
+            .gomys-bolsita-card,
+            .gomys-foto-principal {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="pagina-gomys">
+
+<header>
+    <a class="logo" href="index.html">Laura A.</a>
+
+    <nav aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="proyectos.html" class="activo">Proyectos</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+</header>
+
+<main class="gomys-pagina">
+
+    <!-- 1. PORTADA -->
+    <section class="gomys-portada">
+        <span class="gomys-decoracion gomys-burbuja burbuja-1 portada-burbuja-1"></span>
+        <span class="gomys-decoracion gomys-burbuja burbuja-2 portada-burbuja-2"></span>
+        <span class="gomys-decoracion gomys-remolino portada-remolino"></span>
+        <span class="gomys-decoracion gomys-pulpo portada-pulpo">🐙</span>
+
+        <div class="gomys-contenedor gomys-portada-contenido">
+            <div class="gomys-portada-texto">
+                <span class="gomys-etiqueta">Proyecto de packaging</span>
+                <h1>GOMYS</h1>
+                <p>
+                    Diseño de packaging para una marca ficticia
+                    de gomitas con temática marina.
+                </p>
+            </div>
+
+            <div class="gomys-foto-principal">
+                <img src="foto-gomys.png"
+                     alt="Fotografía publicitaria de Gomys">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CONCEPTO -->
+    <section class="gomys-concepto">
+        <span class="gomys-decoracion gomys-remolino concepto-remolino"></span>
+        <span class="gomys-decoracion gomys-pulpo concepto-pulpo">🐙</span>
+        <span class="gomys-decoracion gomys-burbuja burbuja-3 concepto-burbuja"></span>
+
+        <div class="gomys-contenedor gomys-concepto-contenido">
+            <span class="gomys-simbolo">✳</span>
+            <span class="gomys-etiqueta">Sobre el proyecto</span>
+            <h2 class="gomys-titulo">Concepto</h2>
+            <p class="gomys-texto">
+                Desarrollo de un packaging para una marca ficticia
+                de gomitas con temática marina. El objetivo fue crear
+                una identidad visual llamativa y un empaque funcional
+                que transmitiera una imagen divertida y atractiva.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. IDENTIDAD VISUAL -->
+    <section class="gomys-identidad">
+        <span class="gomys-decoracion gomys-pulpo identidad-pulpo">🐙</span>
+        <span class="gomys-decoracion gomys-remolino identidad-remolino"></span>
+        <span class="gomys-decoracion gomys-burbuja burbuja-1 identidad-burbuja"></span>
+
+        <div class="gomys-contenedor">
+            <span class="gomys-etiqueta">01 / Identidad visual</span>
+            <h2 class="gomys-titulo">Identidad de marca</h2>
+            <p class="gomys-texto">
+                Logotipo y recursos gráficos que forman parte
+                de la identidad visual de Gomys.
+            </p>
+
+            <div class="gomys-identidad-grid">
+                <div class="gomys-logo">
+                    <img src="logo-gomys.png" alt="Logotipo de Gomys">
+                </div>
+
+                <div class="gomys-patron">
+                    <img src="patron-gomys.jpg"
+                         alt="Patrón de gomitas de pulpo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. MI PARTICIPACIÓN -->
+    <section class="gomys-participacion">
+        <span class="gomys-decoracion gomys-remolino participacion-remolino"></span>
+        <span class="gomys-decoracion gomys-pulpo participacion-pulpo">🐙</span>
+
+        <div class="gomys-contenedor gomys-participacion-contenido">
+            <span class="gomys-etiqueta">Mi aporte al proyecto</span>
+            <h2 class="gomys-titulo">Mi participación</h2>
+            <p class="gomys-texto">
+                Este proyecto fue desarrollado en equipo.
+                Mi participación se centró en el diseño del troquel
+                estructural y del empaque interno en Adobe Illustrator,
+                preparando la base técnica para la aplicación
+                del diseño gráfico.
+            </p>
+        </div>
+    </section>
+
+    <!-- 5. SISTEMA DE EMPAQUE -->
+    <section class="gomys-producto">
+        <span class="gomys-decoracion gomys-remolino producto-remolino"></span>
+        <span class="gomys-decoracion gomys-pulpo producto-pulpo">🐙</span>
+        <span class="gomys-decoracion gomys-burbuja burbuja-2 producto-burbuja"></span>
+
+        <div class="gomys-contenedor">
+            <span class="gomys-etiqueta">02 / Sistema de empaque</span>
+            <h2 class="gomys-titulo">Empaque externo e interno</h2>
+            <p class="gomys-texto">
+                Para este proyecto se desarrollaron dos elementos
+                de empaque que funcionan en conjunto. El empaque
+                externo corresponde a la caja, mientras que el
+                interno está compuesto por las bolsas individuales
+                que contienen las gomitas.
+            </p>
+
+            <div class="gomys-tipos-empaque">
+                <div class="gomys-tipo">
+                    <span class="gomys-tipo-numero">01</span>
+                    <h3>Empaque externo</h3>
+                    <p>
+                        Caja diseñada para contener y presentar
+                        el producto.
+                    </p>
+                </div>
+
+                <div class="gomys-tipo">
+                    <span class="gomys-tipo-numero">02</span>
+                    <h3>Empaque interno</h3>
+                    <p>
+                        Bolsas individuales destinadas a contener
+                        las gomitas en su interior.
+                    </p>
+                </div>
+            </div>
+
+            <div class="gomys-producto-imagen">
+                <img src="composicion-gomys.jpg"
+                     alt="Caja exterior y bolsas individuales del empaque Gomys">
+            </div>
+
+            <div class="gomys-empaque-interno">
+                <div class="gomys-empaque-interno-titulo">
+                    <span class="gomys-etiqueta">
+                        Desarrollo del empaque interno
+                    </span>
+                    <h3>Diseño de las bolsitas</h3>
+                    <p>
+                        Proceso estructural y visualización
+                        de las bolsas individuales de Gomys.
+                    </p>
+                </div>
+
+                <div class="gomys-bolsitas-grid">
+                    <div class="gomys-bolsita-card">
+                        <img src="troquel-bolsitas-gomys.png"
+                             alt="Troquel del empaque interno de las bolsitas Gomys">
+                        <h4>Troquel de las bolsitas</h4>
+                        <span>Diseño estructural</span>
+                    </div>
+
+                    <div class="gomys-bolsita-card">
+                        <img src="mockup-bolsitas-gomys.png"
+                             alt="Visualización de las bolsitas terminadas de Gomys">
+                        <h4>Visualización del empaque</h4>
+                        <span>Mockup del producto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. DISEÑO ESTRUCTURAL DE LA CAJA -->
+    <section class="gomys-estructura">
+        <span class="gomys-decoracion gomys-remolino estructura-remolino"></span>
+        <span class="gomys-decoracion gomys-pulpo estructura-pulpo">🐙</span>
+        <span class="gomys-decoracion gomys-burbuja burbuja-3 estructura-burbuja"></span>
+
+        <div class="gomys-contenedor gomys-estructura-contenido">
+            <span class="gomys-etiqueta">03 / Diseño estructural</span>
+            <h2 class="gomys-titulo">Desarrollo del troquel</h2>
+            <p class="gomys-texto">
+                Diseño estructural del empaque desarrollado
+                en Adobe Illustrator.
+            </p>
+
+            <div class="gomys-troquel">
+                <img src="troquel-gomys.jpg"
+                     alt="Troquel estructural del empaque Gomys">
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CIERRE -->
+    <section class="gomys-cierre">
+        <span class="gomys-decoracion gomys-pulpo cierre-pulpo">🐙</span>
+        <span class="gomys-decoracion gomys-remolino cierre-remolino"></span>
+
+        <div class="gomys-contenedor gomys-cierre-contenido">
+            <span class="gomys-etiqueta">Gomys / Packaging</span>
+            <h2 class="gomys-titulo">Diseño que toma forma</h2>
+            <p class="gomys-texto">
+                Una propuesta que integra identidad visual
+                y diseño estructural en la presentación
+                de un producto.
+            </p>
+
+            <a href="packaging.html" class="gomys-volver">
+                ← Volver a Packaging
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    © 2026 Laura Arroyave | Portafolio de Diseño Gráfico
+</footer>
+
+</body>
+</html>
